@@ -28,7 +28,6 @@ export const CountryList = (props: CountryListProps) => {
           <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
-              // value={iso2}
               label="Countries"
               onChange={handleChange}
           >

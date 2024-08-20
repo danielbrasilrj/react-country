@@ -4,6 +4,5 @@ export interface Country {
 }
 
 export interface Capital {
-  name: string;
   capital: string;
 }

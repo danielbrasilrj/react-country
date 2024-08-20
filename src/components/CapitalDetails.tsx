@@ -9,7 +9,7 @@ export const CapitalDetails = (props: CapitalDetailsProps) => {
 
     return (
         <div>
-            {capital?.capital}
+            <b>Capital:</b> {capital?.capital}
         </div>
     );
 };
