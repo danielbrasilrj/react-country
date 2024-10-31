@@ -9,6 +9,7 @@ import {
     Link
 } from "react-router-dom";
 import About from "./pages/About";
+import {CapitalPage} from "./pages/CapitalPage";
 
 function App() {
 
@@ -29,6 +30,10 @@ function App() {
               <Routes>
                   <Route path="/" element={
                       <Home />
+                  }>
+                  </Route>
+                  <Route path="/capital" element={
+                      <CapitalPage />
                   }>
                   </Route>
                   <Route path="/about" element={

@@ -1,14 +1,26 @@
 import {Capital} from "../data/Types";
-import {CapitalDetails} from "../components/CapitalDetails";
+import React, {useEffect} from "react";
+import {getCapitalByCountryIso2} from "../service/countryService";
+import { useSearchParams } from "react-router-dom";
 
-export type CapitalPageProps = {
-    capital: Capital;
-}
+export const CapitalPage =( ) => {
 
-export const CapitalPage =(props: CapitalPageProps) => {
-    const { capital } = props;
+    const [searchParams] = useSearchParams();
+    const [capital, setCapital] = React.useState<Capital | undefined>(undefined);
+
+    useEffect(() => {
+        const iso2 = searchParams.get( "iso2" );
+        if( !iso2 ) {
+            return
+        }
+        getCapitalByCountryIso2(iso2).then(result => {
+            setCapital(result)
+        });
+    }, [searchParams]);
 
     return (
-        <CapitalDetails capital={capital} />
+        <div>
+            <b>{capital?.capital ? 'Capital:' : ''}</b> {capital?.capital}
+        </div>
     );
 }
