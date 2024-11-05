@@ -20,6 +20,7 @@ export const CountryList = (props: CountryListProps) => {
 
   const handleChange = (event: SelectChangeEvent) => {
       onCountryChanged(event.target.value as string);
+      // TODO add country object to Redux context
   };
 
   return (

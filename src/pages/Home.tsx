@@ -44,6 +44,13 @@ export const Home =() => {
         >
             Capital Details
         </Button>
+        <Button variant="text"
+              onClick={() => {
+
+              }}
+        >
+          Country Details
+        </Button>
       </div>
   );
 }
