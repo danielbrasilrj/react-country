@@ -3,6 +3,7 @@ import React, {useEffect} from "react";
 import {getCapitalByCountryIso2} from "../service/countryService";
 import { useSearchParams } from "react-router-dom";
 
+// Getting iso2 via query param
 export const CapitalPage =( ) => {
 
     const [searchParams] = useSearchParams();

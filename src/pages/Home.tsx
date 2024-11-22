@@ -29,6 +29,12 @@ export const Home =() => {
         });
     };
 
+    const navigateToCountryPage = ( ) => {
+        navigate({
+            pathname: "/country"
+        });
+    };
+
   return (
       <div>
         <CountryList countries={countries} onCountryChanged={handleCountryChange} />
@@ -46,7 +52,7 @@ export const Home =() => {
         </Button>
         <Button variant="text"
               onClick={() => {
-
+                  navigateToCountryPage();
               }}
         >
           Country Details
