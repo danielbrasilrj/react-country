@@ -3,6 +3,7 @@ import {Country} from "../data/Types";
 import {FormControl, InputLabel, MenuItem, Select, SelectChangeEvent} from "@mui/material";
 import {useAppDispatch, useAppSelector} from "../app/hooks";
 import { incremented, amountAdded } from "../features/counter/counterSlice";
+import { countrySelected } from "../features/country/countrySlice";
 
 export type CountryListProps = {
   countries: Country[] | undefined;
@@ -27,6 +28,9 @@ export const CountryList = (props: CountryListProps) => {
       onCountryChanged(event.target.value as string);
       dispatch(incremented());
       // dispatch(amountAdded(3));
+
+      const selectedIso2 = event.target.value as string;
+      dispatch(countrySelected(selectedIso2));
   };
 
   return (
