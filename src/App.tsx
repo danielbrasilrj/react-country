@@ -5,7 +5,6 @@ import {
     BrowserRouter as Router,
     Routes,
     Route,
-    useNavigation,
     Link
 } from "react-router-dom";
 import About from "./pages/About";

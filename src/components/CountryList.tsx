@@ -1,8 +1,7 @@
-import React, {ReactNode} from "react";
-import {Country} from "../data/Types";
-import {FormControl, InputLabel, MenuItem, Select, SelectChangeEvent} from "@mui/material";
-import {useAppDispatch, useAppSelector} from "../app/hooks";
-import { incremented, amountAdded } from "../features/counter/counterSlice";
+import React, { ReactNode } from "react";
+import { Country } from "../data/Types";
+import { FormControl, InputLabel, MenuItem, Select, SelectChangeEvent} from "@mui/material";
+import { useAppDispatch } from "../app/hooks";
 import { countrySelected } from "../features/country/countrySlice";
 
 export type CountryListProps = {
@@ -10,10 +9,12 @@ export type CountryListProps = {
   onCountryChanged: (iso2: string) => void;
 }
 
+// TODO Save the selected country on the redux context so when return back from the country Page
+//  it's already selected? When to reset the selected country? Any recommended approach?
+
 export const CountryList = (props: CountryListProps) => {
   const { countries, onCountryChanged } = props;
 
-  const count = useAppSelector( (state) => state.counter.value);
   const dispatch = useAppDispatch();
 
   const renderCountries = (): ReactNode => {
@@ -26,8 +27,6 @@ export const CountryList = (props: CountryListProps) => {
 
   const handleChange = (event: SelectChangeEvent) => {
       onCountryChanged(event.target.value as string);
-      dispatch(incremented());
-      // dispatch(amountAdded(3));
 
       const selectedIso2 = event.target.value as string;
       dispatch(countrySelected(selectedIso2));
@@ -46,8 +45,5 @@ export const CountryList = (props: CountryListProps) => {
                   {renderCountries()}
               </Select>
           </FormControl>
-        <div style={{ padding: '20px' }}>
-            <b>Country selection count: </b> {count}
-        </div>
       </div>
 )}

@@ -1,11 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface CountryState {
-    iso2: string;
+    iso2?: string;
 }
 
 const initialState: CountryState = {
-    iso2: '',
+    iso2: undefined,
 };
 
 const countrySlice = createSlice({
@@ -15,8 +15,11 @@ const countrySlice = createSlice({
         countrySelected(state, action: PayloadAction<string>) {
             state.iso2 = action.payload;
         },
+        resetState(state) {
+            state.iso2 = undefined;
+        }
     },
 });
 
-export const { countrySelected } = countrySlice.actions;
+export const { countrySelected, resetState } = countrySlice.actions;
 export default countrySlice.reducer;
